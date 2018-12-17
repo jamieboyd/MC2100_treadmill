@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+<title>MC2100_treadmill</title>
+<META NAME="AUTHOR" CONTENT="Jamie Boyd">
+</head>
+<h1>Documentation for MC2100_treadmill</h1>
+<p>This project replaces the user interface console of a treadmill that uses the MC-2100 motor control board, which is a popular control board used by many different brands of treadmills.</p>
+<p>It uses an Arduino board, or at least an an AVR microcontroller, plus some simple hardware which will be documented below.</p>
+<h1>Background Information</h1>
+<p>I have a 30827 NordicTrack A2105 treadmill for which the user interface console had become increasingly unreliable. The liquid crytal display was not working, and some of the buttons had stopped working as well. Eventually, it started running at a really fast speed as soon as it was turned on and could not be slowed down. I disasenbled the console and the culprit was found to be corrosion (probably from sweat) on the momentary switch behind the 10 mph button.<br><IMG SRC="sweatySwitchSmall.jpg" ALT="corroded 10mph switch" align="center"><br>
+I decided to replace the user interface panel with a simple Arduino-based solution, basically just a pair of buttons for faster and slower.</p>
+<p>The documentation for the treadmill indicated that it used an MC-2100 motor control board. <a href = "https://sonsofinvention.wordpress.com/2013/05/22/an-update-and-simplification-of-the-original-mc-2100-pwm-circuit/">Schoolie</a> and<a href = "https://el34world.com/Misc/Cnc/Files/Terrys_Dual_555_MC_2100_Driver_Circuit.pdf"> Terry</a> provided some info on the MC-2100 and some circuits on how to drive it, not as a treadmill, but repurposed as a lath or other motor controller, and not using a mocrocontroller, but a 555 timer chip to generate the pulse width modulation output. But they did have the helpful information that the PWM output (connected to blue wire of MC2100) wants a 50ms period, and  0 to 85% duty cycle. Also, the 5V output by the microcontroller to drive the PWM needs a current-limiting resistor of about 1K.</p>
+<h1>Technical Information</h1>
+The control harness from the MC-2100 motor control board to the defunct user interface console has 8 wires:<ol>
+<li>Black	ground</li>
+<li>Red		8-12V DC</li>
+<li>Green	Tach (Pulsing 0,5 DC)</li>
+<li>Blue		PWM output to set speed</li>
+<li>Orange	Incline up (5V output, not used here)</li>
+<li>Yellow	Incline down (5V output, not used here)</li>
+<li>Violet	Incline sensor (pulsing, 0,5V DC; not used here)</li>
+<li>Black 	Ground</li></ol>
+
+
+</body>
+</html>
